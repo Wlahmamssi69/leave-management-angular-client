@@ -1,0 +1,11 @@
+.login-section{
+  margin: 100px;
+}
+
+
+
+.login-failed-text, .register-success-text{
+  text-align: right;
+  margin-top: 5px;
+  color: red;
+}
