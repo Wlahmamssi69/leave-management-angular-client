@@ -13,6 +13,13 @@ import {MatDatepickerModule, MatDateRangeInput, MatDateRangePicker} from "@angul
 import {MatNativeDateModule} from "@angular/material/core";
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -20,10 +27,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     NewLeaveComponent,
   ],
   imports: [
+    HomeComponent,
+    SideNavComponent,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -39,6 +47,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LoginComponent} from "./components/auth/login/login.component";
-import {HomeComponent} from "./components/dashboard/home.component";
+import { LoginComponent } from "./components/auth/login/login.component";
+import { HomeComponent } from "./components/dashboard/home.component";
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to the login page if the path is empty
   { path: 'login', component: LoginComponent },
-  {
-    path:'dashboard',
-    component:HomeComponent
-  }
+  { path: 'dashboard', component: SideNavComponent },
+  {path: 'test', component: HomeComponent}
 ];
 
 @NgModule({
