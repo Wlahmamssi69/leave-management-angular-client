@@ -10,7 +10,45 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
+export interface LeaveRequest {
+  id: number, 
+  startingDate: string,
+  endDate: string,
+  status: string
+}
 
+const mockLeaveRequests: LeaveRequest[] = [
+  {
+    id: 1,
+    startingDate: "2023-12-23",
+    endDate: "2023-12-30",
+    status: "accepted"
+  },
+  {
+    id: 2,
+    startingDate: "2024-01-15",
+    endDate: "2024-01-19",
+    status: "pending"
+  },
+  {
+    id: 3,
+    startingDate: "2023-11-25",
+    endDate: "2023-11-28",
+    status: "declined"
+  },
+  {
+    id: 4,
+    startingDate: "2024-02-06",
+    endDate: "2024-02-10",
+    status: "accepted"
+  },
+  {
+    id: 5,
+    startingDate: "2024-03-01",
+    endDate: "2024-03-05",
+    status: "pending"
+  }
+];
 const ELEMENT_DATA: PeriodicElement[] = [
   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
   { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
@@ -36,6 +74,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  datasource: PeriodicElement[] = ELEMENT_DATA;
-  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
+  datasource: LeaveRequest[] = mockLeaveRequests;
+  displayedColumns: string[] = ['id', 'startingDate', 'endDate', 'status'];
 }

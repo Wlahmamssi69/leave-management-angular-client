@@ -10,30 +10,57 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+
+export interface LeaveRequest {
+  id: number,
+  startingDate: string,
+  endDate: string,
+  status: string
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+const mockLeaveRequests: LeaveRequest[] = [
+  {
+    id: 1,
+    startingDate: "2023-12-23",
+    endDate: "2023-12-30",
+    status: "accepted"
+  },
+  {
+    id: 2,
+    startingDate: "2024-01-15",
+    endDate: "2024-01-19",
+    status: "pending"
+  },
+  {
+    id: 3,
+    startingDate: "2023-11-25",
+    endDate: "2023-11-28",
+    status: "declined"
+  },
+  {
+    id: 4,
+    startingDate: "2024-02-06",
+    endDate: "2024-02-10",
+    status: "accepted"
+  },
+  {
+    id: 5,
+    startingDate: "2024-03-01",
+    endDate: "2024-03-05",
+    status: "pending"
+  },
+  { id: 6, startingDate: "2023-12-15", endDate: "2023-12-20", status: "accepted" },
+  { id: 7, startingDate: "2024-01-05", endDate: "2024-01-10", status: "declined" },
+  { id: 8, startingDate: "2023-11-15", endDate: "2023-11-18", status: "pending" },
+  { id: 9, startingDate: "2024-02-25", endDate: "2024-02-28", status: "accepted" },
+  { id: 10, startingDate: "2024-03-15", endDate: "2024-03-20", status: "pending" },
 ];
+
 @Component({
   selector: 'app-side-nav',
   standalone: true,
-  imports:[
+  imports: [
     CommonModule,
     MatCardModule,
     MatDividerModule,
@@ -48,8 +75,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements AfterViewInit {
-  datasource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
+  datasource = new MatTableDataSource<LeaveRequest>(mockLeaveRequests);
+  displayedColumns: string[] = ['id', 'startingDate', 'endDate', 'status'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngAfterViewInit() {
@@ -61,6 +88,6 @@ export class SideNavComponent implements AfterViewInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver) { }
 
 }
