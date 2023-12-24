@@ -9,22 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Link } from './link';
+import { User } from './user';
 
 
-export interface EntityModelEmployee { 
+export interface Person { 
     firstName?: string;
     lastName?: string;
     phone?: string;
-    email?: string;
-    password?: string;
-    soldePaye?: number;
-    soldeNonPaye?: number;
-    soldeMaternit?: number;
-    soldeMaladie?: number;
-    salire?: number;
-    poste?: string;
+    annualBalance?: number;
+    unpaidBalance?: number;
+    maternityBalance?: number;
+    sickBalance?: number;
+    salary?: number;
+    userAccount?: User;
     id?: number;
-    _links?: { [key: string]: Link; };
 }
 
