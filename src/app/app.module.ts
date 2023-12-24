@@ -9,10 +9,9 @@ import { HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './components/dashboard/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewLeaveComponent } from './components/leave/new-leave/new-leave.component';
-import {MatDatepickerModule, MatDateRangeInput, MatDateRangePicker} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {MaterialModule} from "./material.module";
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+
 
 
 
@@ -32,15 +31,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    MatNativeDateModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatFormFieldModule,
+    MaterialModule,
+
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+  ],
   bootstrap: [AppComponent],
   schemas:[
     NO_ERRORS_SCHEMA

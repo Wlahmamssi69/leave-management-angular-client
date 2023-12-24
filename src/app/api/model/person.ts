@@ -9,20 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { User } from './user';
 
 
-export interface Employee { 
+export interface Person { 
     firstName?: string;
     lastName?: string;
     phone?: string;
-    email?: string;
-    password?: string;
-    soldePaye?: number;
-    soldeNonPaye?: number;
-    soldeMaternit?: number;
-    soldeMaladie?: number;
-    salire?: number;
-    poste?: string;
+    annualBalance?: number;
+    unpaidBalance?: number;
+    maternityBalance?: number;
+    sickBalance?: number;
+    salary?: number;
+    userAccount?: User;
     id?: number;
 }
 

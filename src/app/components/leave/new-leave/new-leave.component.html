@@ -1,36 +1,50 @@
+
 <div class="container mt-4">
-  <div class="card">
-    <div class="card-header">
-      <h4 class="card-title">Apply for a Leave Request</h4>
-    </div>
-    <div class="card-body">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Leave Request Form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
       <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
         <div class="row">
           <div class="col-md-6">
-            <div class="mb-3">
-              <label for="firstName" class="form-label">First Name</label>
-              <input type="text" class="form-control" id="firstName" formControlName="firstName">
-            </div>
+            <mat-form-field class="example-full-width">
+              <mat-label>First Name</mat-label>
+              <input value="employeeFirstName" readonly matInput placeholder="First Name">
+            </mat-form-field>
           </div>
+
           <div class="col-md-6">
-            <div class="mb-3">
-              <label for="lastName" class="form-label">Last Name</label>
-              <input type="text" class="form-control" id="lastName" formControlName="lastName">
-            </div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Last Name</mat-label>
+              <input value="employeeLastName" readonly   matInput placeholder="Last Name">
+            </mat-form-field>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="leaveType" class="form-label">Leave Type</label>
-              <input type="text" class="form-control" id="leaveType" formControlName="leaveType">
+              <mat-form-field >
+                <mat-label>Leave Type</mat-label>
+                <mat-select formControlName="leaveType" >
+                  <mat-option value="SICK">SICK</mat-option>
+                  <mat-option value="ANNUAL">ANNUAL</mat-option>
+                  <mat-option value="UNPAID">UNPAID</mat-option>
+                  <mat-option value="MATERNITY">MATERNITY</mat-option>
+                </mat-select>
+                <mat-error *ngIf="leaveForm.get('leaveType')?.hasError('required')">Please enter a leave type.</mat-error>
+              </mat-form-field>
+
+
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="position" class="form-label">Position</label>
-              <input type="text" class="form-control" id="position" formControlName="position">
+              <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input value="employeePosition" readonly  matInput placeholder="Job Position">
+              </mat-form-field>
             </div>
           </div>
         </div>
@@ -40,30 +54,38 @@
             <div class="mb-3">
               <mat-form-field>
                 <mat-label>Enter a date range</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate placeholder="Start date">
-                  <input matEndDate placeholder="End date">
+                <mat-date-range-input [rangePicker]="picker" >
+                  <input matStartDate placeholder="Start date" formControlName="startDate">
+                  <input matEndDate placeholder="End date" formControlName="endDate">
                 </mat-date-range-input>
                 <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-date-range-picker #picker></mat-date-range-picker>
+                <mat-error *ngIf="leaveForm.get('endDate')?.hasError('required')">Please enter a start and an end date</mat-error>
+                <mat-error *ngIf="leaveForm.get('startDate')?.hasError('invalidStartDate')">Invalid start date</mat-error>
+                <mat-error *ngIf="leaveForm.get('endDate')?.hasError('invalidEndDate')">Invalid end date</mat-error>
+
               </mat-form-field>
+
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="note" class="form-label">Note</label>
-              <textarea class="form-control" id="note" formControlName="note"></textarea>
+              <mat-form-field>
+                <mat-label>Note</mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field>
             </div>
           </div>
         </div>
 
         <div class="mb-3">
-          <button type="submit" class="btn btn-primary">Send Request</button>
+          <button mat-raised-button color="accent">Send Request</button>
         </div>
       </form>
-    </div>
-  </div>
+    </mat-card-content>
+  </mat-card>
+
 </div>
 
 

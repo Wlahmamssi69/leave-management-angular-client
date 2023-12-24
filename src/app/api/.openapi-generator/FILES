@@ -5,6 +5,7 @@ api.module.ts
 api/api.ts
 api/authController.service.ts
 api/employeeControllerImpl.service.ts
+api/leaveController.service.ts
 configuration.ts
 encoder.ts
 git_push.sh
@@ -15,7 +16,12 @@ model/collectionModelEntityModelEmployee.ts
 model/collectionModelEntityModelEmployeeEmbedded.ts
 model/employee.ts
 model/entityModelEmployee.ts
+model/grantedAuthority.ts
+model/inputUserDto.ts
+model/leave.ts
 model/link.ts
 model/models.ts
+model/person.ts
+model/user.ts
 param.ts
 variables.ts
