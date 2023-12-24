@@ -13,7 +13,7 @@ import {MatDatepickerModule, MatDateRangeInput, MatDateRangePicker} from "@angul
 import {MatNativeDateModule} from "@angular/material/core";
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SideNavComponent } from './side-nav/side-nav.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from "./components/auth/login/login.component";
 import { HomeComponent } from "./components/dashboard/home.component";
-import { SideNavComponent } from './side-nav/side-nav.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 const routes: Routes = [
 
