@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatTableDataSource, MatTableDataSourcePaginator, MatTableModule } from '@angular/material/table';
-import { Leave } from '../api/models';
+import { Leave } from '../../api/models';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';

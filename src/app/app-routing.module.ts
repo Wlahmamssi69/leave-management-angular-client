@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirect to the login page if the path is empty
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'newLeave', component: NewLeaveComponent}
 ];
 
 @NgModule({

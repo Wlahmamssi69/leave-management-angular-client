@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewLeaveComponent } from './components/leave/new-leave/new-leave.component';
 import {MaterialModule} from "./material.module";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TableComponent } from './components/table/table.component';
 
 
 

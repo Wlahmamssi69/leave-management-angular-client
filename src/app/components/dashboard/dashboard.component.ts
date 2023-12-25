@@ -14,7 +14,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { LeaveControllerImplService } from 'src/app/api/services';
 import { GetAllLeaves$Params, getAllLeaves } from 'src/app/api/fn/leave-controller-impl/get-all-leaves';
 import { CollectionModelEntityModelLeave, Leave } from 'src/app/api/models';
-import { TableComponent } from 'src/app/table/table.component';
+import { TableComponent } from 'src/app/components/table/table.component';
 import { RouterModule } from '@angular/router';
 
 
