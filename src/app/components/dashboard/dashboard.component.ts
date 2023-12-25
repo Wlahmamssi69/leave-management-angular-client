@@ -14,13 +14,17 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { LeaveControllerImplService } from 'src/app/api/services';
 import { GetAllLeaves$Params, getAllLeaves } from 'src/app/api/fn/leave-controller-impl/get-all-leaves';
 import { CollectionModelEntityModelLeave, Leave } from 'src/app/api/models';
+import { TableComponent } from 'src/app/table/table.component';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-side-nav',
   standalone: true,
   imports: [
+    TableComponent,
     CommonModule,
+    RouterModule,
     MatCardModule,
     MatDividerModule,
     MatTableModule,
@@ -30,10 +34,10 @@ import { CollectionModelEntityModelLeave, Leave } from 'src/app/api/models';
     MatListModule,
     MatPaginatorModule
   ],
-  templateUrl: './side-nav.component.html',
-  styleUrls: ['./side-nav.component.css']
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class SideNavComponent implements  OnInit {
+export class DashboardComponent implements  OnInit {
   datasource!: MatTableDataSource<Leave, MatTableDataSourcePaginator>;
   displayedColumns: string[] = ['leaveId', 'startDate', 'endDate', 'leaveType', 'status'];
   leaveService: LeaveControllerImplService = inject(LeaveControllerImplService);
