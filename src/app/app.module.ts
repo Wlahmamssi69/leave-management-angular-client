@@ -6,7 +6,6 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule} from "@angular/common/http";
-import { HomeComponent } from './components/dashboard/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewLeaveComponent } from './components/leave/new-leave/new-leave.component';
 import {MaterialModule} from "./material.module";
@@ -19,10 +18,11 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     NewLeaveComponent,
   ],
   imports: [
+    TableComponent,
+    DashboardComponent,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
