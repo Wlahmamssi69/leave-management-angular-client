@@ -39,15 +39,15 @@
         <div class="d-flex mx-auto justify-content-center text-center w-75  py-5 ">
           <!-- <div class=" "> -->
           <table mat-table [dataSource]="datasource" class="mw-25 shadow rounded-5">
-            <ng-container matColumnDef="id">
+            <ng-container matColumnDef="leaveId">
               <th mat-header-cell *matHeaderCellDef> No. </th>
-              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.leaveId}} </td>
             </ng-container>
 
             <!-- Name Column -->
-            <ng-container matColumnDef="startingDate">
+            <ng-container matColumnDef="startDate">
               <th mat-header-cell *matHeaderCellDef> Starting Date </th>
-              <td mat-cell *matCellDef="let element"> {{element.startingDate}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
             </ng-container>
 
             <!-- Weight Column -->
@@ -56,10 +56,15 @@
               <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
             </ng-container>
 
-            <!-- Symbol Column -->
             <ng-container matColumnDef="status">
               <th mat-header-cell *matHeaderCellDef> Status </th>
               <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="leaveType">
+              <th mat-header-cell *matHeaderCellDef> Leave Type </th>
+              <td mat-cell *matCellDef="let element"> {{element.leaveType}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
