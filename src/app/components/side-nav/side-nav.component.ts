@@ -15,50 +15,6 @@ import { LeaveControllerImplService } from 'src/app/api/services';
 import { GetAllLeaves$Params, getAllLeaves } from 'src/app/api/fn/leave-controller-impl/get-all-leaves';
 import { CollectionModelEntityModelLeave, Leave } from 'src/app/api/models';
 
-export interface LeaveRequest {
-  id: number,
-  startingDate: string,
-  endDate: string,
-  status: string
-}
-
-const mockLeaveRequests: LeaveRequest[] = [
-  {
-    id: 1,
-    startingDate: "2023-12-23",
-    endDate: "2023-12-30",
-    status: "accepted"
-  },
-  {
-    id: 2,
-    startingDate: "2024-01-15",
-    endDate: "2024-01-19",
-    status: "pending"
-  },
-  {
-    id: 3,
-    startingDate: "2023-11-25",
-    endDate: "2023-11-28",
-    status: "declined"
-  },
-  {
-    id: 4,
-    startingDate: "2024-02-06",
-    endDate: "2024-02-10",
-    status: "accepted"
-  },
-  {
-    id: 5,
-    startingDate: "2024-03-01",
-    endDate: "2024-03-05",
-    status: "pending"
-  },
-  { id: 6, startingDate: "2023-12-15", endDate: "2023-12-20", status: "accepted" },
-  { id: 7, startingDate: "2024-01-05", endDate: "2024-01-10", status: "declined" },
-  { id: 8, startingDate: "2023-11-15", endDate: "2023-11-18", status: "pending" },
-  { id: 9, startingDate: "2024-02-25", endDate: "2024-02-28", status: "accepted" },
-  { id: 10, startingDate: "2024-03-15", endDate: "2024-03-20", status: "pending" },
-];
 
 @Component({
   selector: 'app-side-nav',
@@ -77,16 +33,15 @@ const mockLeaveRequests: LeaveRequest[] = [
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.css']
 })
-export class SideNavComponent implements AfterViewInit, OnInit {
+export class SideNavComponent implements  OnInit {
   datasource!: MatTableDataSource<Leave, MatTableDataSourcePaginator>;
   displayedColumns: string[] = ['leaveId', 'startDate', 'endDate', 'leaveType', 'status'];
   leaveService: LeaveControllerImplService = inject(LeaveControllerImplService);
   leaves!: CollectionModelEntityModelLeave;
-
+  isDataSourceEmpty:boolean = true;
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  ngAfterViewInit() {
-    // this.datasource.paginator = this.paginator;
-  }
+
   ngOnInit(): void {
     // TODO: remove this line when it's added 
     // in the login 
@@ -121,9 +76,8 @@ export class SideNavComponent implements AfterViewInit, OnInit {
         this.datasource = new MatTableDataSource<Leave>(leaves.body._embedded!.leaveList);
         this.datasource.paginator = this.paginator;
 
-        if (this.datasource.data.length === 0)
-          console.log("data source empty");
-
+        if (this.datasource.data.length !== 0)
+          this.isDataSourceEmpty = false;
       });
   }
 
