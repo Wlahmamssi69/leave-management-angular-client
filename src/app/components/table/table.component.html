@@ -1,0 +1,47 @@
+<div class="vstack">
+
+    <div class="d-flex mx-auto justify-content-center text-center w-75  py-5 ">
+      <!-- <div class=" "> -->
+      <div class="vstack">
+        <table mat-table [dataSource]="datasource" class="mw-25 shadow rounded-5">
+          <ng-container matColumnDef="leaveId">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.leaveId}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef> Starting Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef> End Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="leaveType">
+            <th mat-header-cell *matHeaderCellDef> Leave Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.leaveType}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-card *ngIf="isDataSourceEmpty">
+          <mat-card-content>No request has been made yet</mat-card-content>
+        </mat-card>
+      </div>
+
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+      aria-label="Select page of leave submissions" class="mx-auto" style="background-color: #FAFAFA;">
+    </mat-paginator>
+  </div>

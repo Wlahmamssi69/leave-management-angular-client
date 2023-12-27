@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthControllerService, AuthenticationRequest} from "../../../../../generated-angular-services";
+import {AuthenticationRequest,AuthControllerService} from "../../../api";
 import {Router} from "@angular/router";
 
 @Component({
@@ -36,8 +36,12 @@ export class LoginComponent implements OnInit{
       data=>{
             this.loginFailed=false;
           console.log(data);
-         this.router.navigateByUrl('/dashboard');
 
+          // TODO: pass the personId into the localStorage 
+          // before navigating to the dashboard
+        // localStorage.setItem('PersonId', '1');
+    
+         this.router.navigateByUrl('/dashboard');
 
 
       },error => {
