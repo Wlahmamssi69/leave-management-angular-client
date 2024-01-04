@@ -6,6 +6,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
+import {MatDrawerContainer, MatSidenavModule} from "@angular/material/sidenav";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 @NgModule({
   imports:[
     MatNativeDateModule,
@@ -16,7 +21,12 @@ import {MatCardModule} from "@angular/material/card";
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule,
+    MatDialogModule,
   ],
   exports:[
     MatNativeDateModule,
@@ -28,6 +38,11 @@ import {MatCardModule} from "@angular/material/card";
     MatSelectModule,
     MatButtonModule,
     MatCardModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule,
+    MatDialogModule
 
   ]
 })

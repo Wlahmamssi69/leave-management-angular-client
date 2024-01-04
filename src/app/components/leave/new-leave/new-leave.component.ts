@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
-import {Leave,LeaveControllerService} from "../../../api";
+
 import {Observable} from "rxjs";
+import {LeaveControllerService} from "../../../api/api/leaveController.service";
+import {Leave} from "../../../api/models/leave";
 
 @Component({
   selector: 'app-new-leave',
