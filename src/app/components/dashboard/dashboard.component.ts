@@ -16,8 +16,8 @@ import { GetAllLeaves$Params, getAllLeaves } from 'src/app/api/fn/leave-controll
 import { CollectionModelEntityModelLeave, Leave } from 'src/app/api/models';
 import { TableComponent } from 'src/app/components/table/table.component';
 import { RouterModule } from '@angular/router';
-
-// import {LeaveControm}
+import { CancelLeaveRequest$Params } from 'src/app/api/fn/leave-controller-impl/cancel-leave-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
   datasource!: MatTableDataSource<Leave, MatTableDataSourcePaginator>;
   displayedColumns: string[] = ['leaveId', 'startDate', 'endDate', 'leaveType', 'status'];
   leaveService: LeaveControllerImplService = inject(LeaveControllerImplService);
+  router: Router = inject(Router);
   leaves!: CollectionModelEntityModelLeave;
   isDataSourceEmpty: boolean = true;
   processingRequestExists: boolean = false;
@@ -59,7 +60,7 @@ export class DashboardComponent implements OnInit {
 
     this.leaveService.getAllLeaves$Response(input)
       .pipe(
-        tap((leaves)=> {
+        tap((leaves) => {
           // Validate received data
           if (!leaves.body || !leaves.body._embedded || !leaves.body._embedded.leaveList) {
             throw new Error('Invalid data received from server');
@@ -97,28 +98,37 @@ export class DashboardComponent implements OnInit {
   }
 
   private initPendingRequest(leaves: any) {
-    const leave:Leave[] =  leaves.body._embedded!.leaveList.filter((leave: Leave) => {
+    const leave: Leave[] = leaves.body._embedded!.leaveList.filter((leave: Leave) => {
       return leave.status === "PENDING";
     });
-    if(leave.length === 0) {
+    if (leave.length === 0) {
       this.processingRequestExists = false;
       this.pendingLeaveRequestId = -1;
-      return;  
+      return;
     }
     this.processingRequestExists = true;
     this.pendingLeaveRequestId = Number(leave[0].leaveId);
     console.log(this.pendingLeaveRequestId);
-    
+
   }
 
   cancelOnClick() {
-    if(this.pendingLeaveRequestId === -1) return;
+    if (this.pendingLeaveRequestId === -1) return;
     // this.leaveService.
     // this.leaveService.
-    
-    console.log(`the leave ${this.pendingLeaveRequestId} is being canceled`);
 
-    
+    console.log(`the leave ${this.pendingLeaveRequestId} is being canceled`);
+    const cancelLeaveRequestParam: CancelLeaveRequest$Params = { idLeave: this.pendingLeaveRequestId };
+    this.leaveService.cancelLeaveRequest$Response(cancelLeaveRequestParam)
+      .subscribe((leave) => {
+        console.log(leave);
+        window.location.reload();
+      }),
+      catchError(err => {
+        console.log(err);
+        return of();
+      });
+
   }
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
