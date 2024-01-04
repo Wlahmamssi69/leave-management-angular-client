@@ -12,6 +12,11 @@ import {MaterialModule} from "./material.module";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TableComponent } from './components/table/table.component';
+import {SideBarComponent} from "./components/side-bar/side-bar.component";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './components/leave/calendar/calendar.component';
+import { LeaveDetailComponent } from './components/leave/leave-detail/leave-detail.component';
 
 
 
@@ -21,6 +26,9 @@ import { TableComponent } from './components/table/table.component';
     AppComponent,
     LoginComponent,
     NewLeaveComponent,
+    SideBarComponent,
+    CalendarComponent,
+    LeaveDetailComponent
   ],
   imports: [
     TableComponent,
@@ -35,6 +43,7 @@ import { TableComponent } from './components/table/table.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
 
   ],
   providers: [
