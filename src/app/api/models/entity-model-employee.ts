@@ -1,7 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import { Links } from '../models/links';
-import { User } from '../models/user';
 export interface EntityModelEmployee {
   '_links'?: Links;
   annualBalance?: number;
@@ -14,5 +13,4 @@ export interface EntityModelEmployee {
   salary?: number;
   sickBalance?: number;
   unpaidBalance?: number;
-  userAccount?: User;
 }

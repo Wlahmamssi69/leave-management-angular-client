@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthenticationRequest,AuthControllerService} from "../../../api";
+import { AuthenticationRequest } from 'src/app/api/models';
+import { AuthControllerService } from 'src/app/api/services';
 import {Router} from "@angular/router";
 
 @Component({
@@ -32,8 +33,8 @@ export class LoginComponent implements OnInit{
       password: password
     };
 
-    this.authService.authenticate(loginRequest).subscribe(
-      data=>{
+    this.authService.authenticate({body: loginRequest}).subscribe(
+      (data)=>{
             this.loginFailed=false;
           console.log(data);
 
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit{
          this.router.navigateByUrl('/dashboard');
 
 
-      },error => {
+      },(error) => {
         this.loginFailed=true;
         console.log("authentication failed");
 

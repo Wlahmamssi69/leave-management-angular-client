@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
 
     this.leaveService.getAllLeaves$Response(input)
       .pipe(
-        tap(leaves => {
+        tap((leaves)=> {
           // Validate received data
           if (!leaves.body || !leaves.body._embedded || !leaves.body._embedded.leaveList) {
             throw new Error('Invalid data received from server');
@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
 
         })
       )
-      .subscribe(leaves => {
+      .subscribe((leaves) => {
         console.log(leaves.body._embedded!.leaveList);
         // console.log(typeof leaves);
 
@@ -117,6 +117,7 @@ export class DashboardComponent implements OnInit {
     // this.leaveService.
     
     console.log(`the leave ${this.pendingLeaveRequestId} is being canceled`);
+
     
   }
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

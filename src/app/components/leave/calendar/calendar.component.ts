@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {CalendarEvent, CalendarView} from "angular-calendar";
-import {LeaveControllerImplService} from "../../../api";
+import { LeaveControllerImplService } from 'src/app/api/services';
 import { EventColor } from 'calendar-utils';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -21,7 +21,7 @@ import {LeaveDetailComponent} from "../leave-detail/leave-detail.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {LeaveService} from "../../../services/leave.service";
-import {Leave} from "../../../model/leave"
+import { Leave } from 'src/app/api/models';
 const leaveColors: EventColor[] = [
   { primary: '#c57616', secondary: '#FAE3E3' },
   { primary: '#1e90ff', secondary: '#D1E8FF' },
