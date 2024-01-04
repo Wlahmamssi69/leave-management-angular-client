@@ -8,14 +8,14 @@ import { RequestBuilder } from '../../request-builder';
 
 import { CollectionModelEntityModelLeave } from '../../models/collection-model-entity-model-leave';
 
-export interface GetAllLeaves1$Params {
-  idPerson: number;
+export interface GetLeavesUnderSupervision$Params {
+  idManager: number;
 }
 
-export function getAllLeaves1(http: HttpClient, rootUrl: string, params: GetAllLeaves1$Params, context?: HttpContext): Observable<StrictHttpResponse<CollectionModelEntityModelLeave>> {
-  const rb = new RequestBuilder(rootUrl, getAllLeaves1.PATH, 'get');
+export function getLeavesUnderSupervision(http: HttpClient, rootUrl: string, params: GetLeavesUnderSupervision$Params, context?: HttpContext): Observable<StrictHttpResponse<CollectionModelEntityModelLeave>> {
+  const rb = new RequestBuilder(rootUrl, getLeavesUnderSupervision.PATH, 'get');
   if (params) {
-    rb.path('idPerson', params.idPerson, {});
+    rb.path('idManager', params.idManager, {});
   }
 
   return http.request(
@@ -28,4 +28,4 @@ export function getAllLeaves1(http: HttpClient, rootUrl: string, params: GetAllL
   );
 }
 
-getAllLeaves1.PATH = '/api/v1/leaves/{idPerson}';
+getLeavesUnderSupervision.PATH = '/api/v1/leaves/managers/{idManager}';

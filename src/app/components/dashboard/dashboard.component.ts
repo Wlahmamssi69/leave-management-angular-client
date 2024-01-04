@@ -17,6 +17,7 @@ import { CollectionModelEntityModelLeave, Leave } from 'src/app/api/models';
 import { TableComponent } from 'src/app/components/table/table.component';
 import { RouterModule } from '@angular/router';
 
+// import {LeaveControm}
 
 @Component({
   selector: 'app-dashboard',
@@ -37,12 +38,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements  OnInit {
+export class DashboardComponent implements OnInit {
   datasource!: MatTableDataSource<Leave, MatTableDataSourcePaginator>;
   displayedColumns: string[] = ['leaveId', 'startDate', 'endDate', 'leaveType', 'status'];
   leaveService: LeaveControllerImplService = inject(LeaveControllerImplService);
   leaves!: CollectionModelEntityModelLeave;
-  isDataSourceEmpty:boolean = true;
+  isDataSourceEmpty: boolean = true;
+  processingRequestExists: boolean = false;
+  pendingLeaveRequestId: number = -1;
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -56,7 +59,7 @@ export class DashboardComponent implements  OnInit {
 
     this.leaveService.getAllLeaves$Response(input)
       .pipe(
-        tap(leaves => {
+        tap((leaves)=> {
           // Validate received data
           if (!leaves.body || !leaves.body._embedded || !leaves.body._embedded.leaveList) {
             throw new Error('Invalid data received from server');
@@ -76,16 +79,47 @@ export class DashboardComponent implements  OnInit {
 
         })
       )
-      .subscribe(leaves => {
+      .subscribe((leaves) => {
         console.log(leaves.body._embedded!.leaveList);
-        this.datasource = new MatTableDataSource<Leave>(leaves.body._embedded!.leaveList);
-        this.datasource.paginator = this.paginator;
+        // console.log(typeof leaves);
 
-        if (this.datasource.data.length !== 0)
-          this.isDataSourceEmpty = false;
+        this.initDataSource(leaves);
+        this.initPendingRequest(leaves);
       });
   }
 
+  private initDataSource(leaves: any) {
+    this.datasource = new MatTableDataSource<Leave>(leaves.body._embedded.leaveList);
+    this.datasource.paginator = this.paginator;
+
+    if (this.datasource.data.length !== 0)
+      this.isDataSourceEmpty = false;
+  }
+
+  private initPendingRequest(leaves: any) {
+    const leave:Leave[] =  leaves.body._embedded!.leaveList.filter((leave: Leave) => {
+      return leave.status === "PENDING";
+    });
+    if(leave.length === 0) {
+      this.processingRequestExists = false;
+      this.pendingLeaveRequestId = -1;
+      return;  
+    }
+    this.processingRequestExists = true;
+    this.pendingLeaveRequestId = Number(leave[0].leaveId);
+    console.log(this.pendingLeaveRequestId);
+    
+  }
+
+  cancelOnClick() {
+    if(this.pendingLeaveRequestId === -1) return;
+    // this.leaveService.
+    // this.leaveService.
+    
+    console.log(`the leave ${this.pendingLeaveRequestId} is being canceled`);
+
+    
+  }
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

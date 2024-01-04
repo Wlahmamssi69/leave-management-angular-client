@@ -7,9 +7,7 @@ export { CollectionModelEntityModelLeave } from './models/collection-model-entit
 export { Employee } from './models/employee';
 export { EntityModelEmployee } from './models/entity-model-employee';
 export { EntityModelLeave } from './models/entity-model-leave';
-export { GrantedAuthority } from './models/granted-authority';
 export { InputUserDto } from './models/input-user-dto';
 export { Leave } from './models/leave';
 export { Link } from './models/link';
 export { Links } from './models/links';
-export { User } from './models/user';

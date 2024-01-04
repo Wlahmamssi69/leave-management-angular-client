@@ -3,8 +3,8 @@ import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators} f
 import {Router} from "@angular/router";
 
 import {Observable} from "rxjs";
-import {LeaveControllerService} from "../../../api/api/leaveController.service";
-import {Leave} from "../../../api/models/leave";
+import { LeaveControllerImplService } from 'src/app/api/services';
+import { Leave } from 'src/app/api/models';
 
 @Component({
   selector: 'app-new-leave',
@@ -14,7 +14,7 @@ import {Leave} from "../../../api/models/leave";
 export class NewLeaveComponent {
   leaveForm: FormGroup;
 
-  constructor(private fb: FormBuilder,private leaveService:LeaveControllerService,private router:Router) {
+  constructor(private fb: FormBuilder,private leaveService:LeaveControllerImplService,private router:Router) {
 
     this.leaveForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -63,7 +63,7 @@ export class NewLeaveComponent {
       }
 
       // Handle the form submission logic here
-      this.leaveService.submitLeaveRequest(1,newLeave).subscribe({
+      this.leaveService.submitLeaveRequest({idPerson: 1, body: newLeave}).subscribe({
         next:(response)=>{
           console.log('Leave request submitted successfully:', response);
           this.router.navigateByUrl('dashboard');
