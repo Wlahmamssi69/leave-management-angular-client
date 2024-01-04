@@ -1,5 +1,4 @@
 mat-card {
-  max-width: 650px; /* Set  maximum width */
   margin: 0 auto; /* Center the card horizontally */
 }
 mat-card-header{

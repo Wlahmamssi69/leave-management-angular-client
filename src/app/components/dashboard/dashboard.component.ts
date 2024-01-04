@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
 
 
 @Component({
-  selector: 'app-side-nav',
+  selector: 'app-dashboard',
   standalone: true,
   imports: [
     TableComponent,
@@ -43,13 +43,14 @@ export class DashboardComponent implements  OnInit {
   leaveService: LeaveControllerImplService = inject(LeaveControllerImplService);
   leaves!: CollectionModelEntityModelLeave;
   isDataSourceEmpty:boolean = true;
-  
+
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    // TODO: remove this line when it's added 
-    // in the login 
-    localStorage.setItem('PersonId', '1');
+    // TODO: remove this line when it's added
+    // in the login
+    localStorage.setItem('PersonId', '3');
     const input: GetAllLeaves$Params = { idPerson: Number(localStorage.getItem('PersonId')) };
 
 

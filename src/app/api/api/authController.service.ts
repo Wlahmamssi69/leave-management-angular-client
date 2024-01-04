@@ -11,13 +11,12 @@
  */
 /* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from '@angular/core';
-import {
-    HttpClient, HttpHeaders, HttpParams,
-    HttpResponse, HttpEvent, HttpParameterCodec, HttpContext
-} from '@angular/common/http';
-import { CustomHttpParameterCodec } from '../encoder';
-import { Observable } from 'rxjs';
+import { Inject, Injectable, Optional }                      from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+        }       from '@angular/common/http';
+import { CustomHttpParameterCodec }                          from '../encoder';
+import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
 import { AuthenticationRequest } from '../model/authenticationRequest';
@@ -25,13 +24,13 @@ import { AuthenticationRequest } from '../model/authenticationRequest';
 import { AuthenticationResponse } from '../model/authenticationResponse';
 
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
-import { Configuration } from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { Configuration }                                     from '../configuration';
 
 
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthControllerService {
 
@@ -40,7 +39,7 @@ export class AuthControllerService {
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
 
-    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string | string[], @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string|string[], @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
         }
@@ -75,15 +74,15 @@ export class AuthControllerService {
 
         if (typeof value === "object") {
             if (Array.isArray(value)) {
-                (value as any[]).forEach(elem => httpParams = this.addToHttpParamsRecursive(httpParams, elem, key));
+                (value as any[]).forEach( elem => httpParams = this.addToHttpParamsRecursive(httpParams, elem, key));
             } else if (value instanceof Date) {
                 if (key != null) {
                     httpParams = httpParams.append(key, (value as Date).toISOString().substring(0, 10));
                 } else {
-                    throw Error("key may not be null if value is Date");
+                   throw Error("key may not be null if value is Date");
                 }
             } else {
-                Object.keys(value).forEach(k => httpParams = this.addToHttpParamsRecursive(
+                Object.keys(value).forEach( k => httpParams = this.addToHttpParamsRecursive(
                     httpParams, value[k], key != null ? `${key}.${k}` : k));
             }
         } else if (key != null) {
@@ -99,10 +98,10 @@ export class AuthControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public authenticate(authenticationRequest: AuthenticationRequest, observe?: 'body', reportProgress?: boolean, options?: { httpHeaderAccept?: '*/*', context?: HttpContext }): Observable<AuthenticationResponse>;
-    public authenticate(authenticationRequest: AuthenticationRequest, observe?: 'response', reportProgress?: boolean, options?: { httpHeaderAccept?: '*/*', context?: HttpContext }): Observable<HttpResponse<AuthenticationResponse>>;
-    public authenticate(authenticationRequest: AuthenticationRequest, observe?: 'events', reportProgress?: boolean, options?: { httpHeaderAccept?: '*/*', context?: HttpContext }): Observable<HttpEvent<AuthenticationResponse>>;
-    public authenticate(authenticationRequest: AuthenticationRequest, observe: any = 'body', reportProgress: boolean = false, options?: { httpHeaderAccept?: '*/*', context?: HttpContext }): Observable<any> {
+    public authenticate(authenticationRequest: AuthenticationRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<AuthenticationResponse>;
+    public authenticate(authenticationRequest: AuthenticationRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<AuthenticationResponse>>;
+    public authenticate(authenticationRequest: AuthenticationRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<AuthenticationResponse>>;
+    public authenticate(authenticationRequest: AuthenticationRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
         if (authenticationRequest === null || authenticationRequest === undefined) {
             throw new Error('Required parameter authenticationRequest was null or undefined when calling authenticate.');
         }
@@ -165,10 +164,10 @@ export class AuthControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public refreshToken(observe?: 'body', reportProgress?: boolean, options?: { httpHeaderAccept?: '*/*', context?: HttpContext }): Observable<any>;
-    public refreshToken(observe?: 'response', reportProgress?: boolean, options?: { httpHeaderAccept?: '*/*', context?: HttpContext }): Observable<HttpResponse<any>>;
-    public refreshToken(observe?: 'events', reportProgress?: boolean, options?: { httpHeaderAccept?: '*/*', context?: HttpContext }): Observable<HttpEvent<any>>;
-    public refreshToken(observe: any = 'body', reportProgress: boolean = false, options?: { httpHeaderAccept?: '*/*', context?: HttpContext }): Observable<any> {
+    public refreshToken(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any>;
+    public refreshToken(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpResponse<any>>;
+    public refreshToken(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<HttpEvent<any>>;
+    public refreshToken(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 

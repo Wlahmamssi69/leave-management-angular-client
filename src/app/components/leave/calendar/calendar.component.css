@@ -1,0 +1,10 @@
+.btn.clicked {
+  background-color: #e056a5; /* Change to your desired clicked state background color */
+  color: #fff; /* Change to your desired clicked state text color */
+}
+.btn-group button {
+  width: 100px; /* Adjust the width as needed */
+  height: 36px; /* Adjust the height as needed */
+  border-radius: 2px;
+  margin: 2px; /* Adjust the margin as needed */
+}
