@@ -18,7 +18,15 @@ import { TableComponent } from 'src/app/components/table/table.component';
 import { RouterModule } from '@angular/router';
 import { CancelLeaveRequest$Params } from 'src/app/api/fn/leave-controller-impl/cancel-leave-request';
 import { Router } from '@angular/router';
-
+import {
+  MatSnackBar,
+  MatSnackBarAction,
+  MatSnackBarActions,
+  MatSnackBarLabel,
+  MatSnackBarRef,
+  MatSnackBarModule
+} from '@angular/material/snack-bar';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -33,7 +41,9 @@ import { Router } from '@angular/router';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
+
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
@@ -47,10 +57,11 @@ export class DashboardComponent implements OnInit {
   isDataSourceEmpty: boolean = true;
   processingRequestExists: boolean = false;
   pendingLeaveRequestId: number = -1;
-
+  snackBar : SnackBarService = inject(SnackBarService);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  
   ngOnInit(): void {
     // TODO: remove this line when it's added
     // in the login
@@ -123,6 +134,7 @@ export class DashboardComponent implements OnInit {
       .subscribe((leave) => {
         console.log(leave);
         window.location.reload();
+        this.snackBar.showSnackBar("canceled leave successfully");
       }),
       catchError(err => {
         console.log(err);

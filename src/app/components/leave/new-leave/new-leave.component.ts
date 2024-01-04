@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 
 import { Observable } from "rxjs";
 import { LeaveControllerImplService } from 'src/app/api/services';
 import { Leave } from 'src/app/api/models';
-
+import {
+  MatSnackBar,
+  MatSnackBarAction,
+  MatSnackBarActions,
+  MatSnackBarLabel,
+  MatSnackBarRef,
+  MatSnackBarModule
+} from '@angular/material/snack-bar';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
 @Component({
   selector: 'app-new-leave',
   templateUrl: './new-leave.component.html',
@@ -13,7 +21,7 @@ import { Leave } from 'src/app/api/models';
 })
 export class NewLeaveComponent {
   leaveForm: FormGroup;
-
+  snackBar : SnackBarService = inject(SnackBarService);
   constructor(private fb: FormBuilder, private leaveService: LeaveControllerImplService, private router: Router) {
 
     this.leaveForm = this.fb.group({
@@ -63,10 +71,11 @@ export class NewLeaveComponent {
     }
 
     // Handle the form submission logic here
-    this.leaveService.submitLeaveRequest({ idPerson: 1, body: newLeave }).subscribe({
+    this.leaveService.submitLeaveRequest({ idPerson: 3, body: newLeave }).subscribe({
       next: (response) => {
         console.log('Leave request submitted successfully:', response);
         this.router.navigateByUrl('dashboard');
+        this.snackBar.showSnackBar("Leave added sucessfully");
       },
       error: (err) => {
         console.error('Error submitting the request', err)

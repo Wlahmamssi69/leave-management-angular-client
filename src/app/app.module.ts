@@ -17,6 +17,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './components/leave/calendar/calendar.component';
 import { LeaveDetailComponent } from './components/leave/leave-detail/leave-detail.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -43,6 +44,7 @@ import { LeaveDetailComponent } from './components/leave/leave-detail/leave-deta
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatSnackBarModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
 
   ],
