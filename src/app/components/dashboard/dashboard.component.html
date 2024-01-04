@@ -4,10 +4,8 @@
     <mat-toolbar style="background-color: #494949; color: white;"
       class="text-center justify-content-center h-auto py-3">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item
-        [routerLink]="['/dashboard']">Dashboard</a>
-      <a mat-list-item
-      [routerLink]="['/newLeave']">Submit request</a>
+      <a mat-list-item [routerLink]="['/dashboard']">Dashboard</a>
+      <a mat-list-item [routerLink]="['/newLeave']">Submit request</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="">
@@ -26,18 +24,19 @@
                 <div class="d-flex flex-row gap-2">
                   <div class="d-flex border  rounded-circle my-auto "
                     style="width: 10px; height: 10px; border-color: #B1A31E; background-color: #F6AF25;"></div>
-                  <span>Processing request </span>
+                  <span class="my-auto">Processing request </span>
+                  <button type="button" class="btn btn-danger">Cancel</button>
+
                 </div>
+
               </div>
             </div>
           </mat-card-content>
         </mat-card>
       </div>
       <!-- Table -->
-      <app-table
-      [datasource]="datasource"
-      [isDataSourceEmpty]="isDataSourceEmpty"
-      [displayedColumns]="displayedColumns">
+      <app-table [datasource]="datasource" [isDataSourceEmpty]="isDataSourceEmpty"
+        [displayedColumns]="displayedColumns">
       </app-table>
     </div>
   </mat-sidenav-content>

@@ -49,7 +49,7 @@ export class DashboardComponent implements  OnInit {
   ngOnInit(): void {
     // TODO: remove this line when it's added 
     // in the login 
-    localStorage.setItem('PersonId', '1');
+    localStorage.setItem('PersonId', '3');
     const input: GetAllLeaves$Params = { idPerson: Number(localStorage.getItem('PersonId')) };
 
 
