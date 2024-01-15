@@ -6,6 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import {map, tap} from 'rxjs/operators';
+
 import {
   startOfDay,
   endOfDay,
@@ -50,8 +51,6 @@ export class CalendarComponent implements OnInit {
   viewDate: Date = new Date;
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView
-
-
   // Track button states
   isDayClicked = false;
   isWeekClicked = false;
