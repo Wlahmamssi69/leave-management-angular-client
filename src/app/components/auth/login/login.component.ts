@@ -37,11 +37,11 @@ export class LoginComponent implements OnInit{
             this.loginFailed=false;
           console.log(data);
 
-          // TODO: pass the personId into the localStorage 
+          // TODO: pass the personId into the localStorage
           // before navigating to the dashboard
         // localStorage.setItem('PersonId', '1');
-    
-         this.router.navigateByUrl('/dashboard');
+
+         // this.router.navigateByUrl('/dashboard');
 
 
       },error => {
