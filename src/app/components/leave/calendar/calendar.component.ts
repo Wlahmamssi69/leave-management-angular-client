@@ -124,6 +124,7 @@ export class CalendarComponent implements OnInit {
 
   eventClicked({event}: { event: CalendarEvent<{ leave: Leave }> }): void {
     this.openLeaveDetailsModal(event.meta!.leave);
+    
   }
 
   openLeaveDetailsModal(leave: Leave): void {

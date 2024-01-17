@@ -78,7 +78,9 @@ export class NewLeaveComponent {
         this.snackBar.showSnackBar("Leave added sucessfully");
       },
       error: (err) => {
-        console.error('Error submitting the request', err)
+        this.snackBar.showSnackBar(err.error);
+
+        // console.error('Error submitting the request', )
       }
     })
 
