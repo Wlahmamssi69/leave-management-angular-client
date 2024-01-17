@@ -5,8 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {NewLeaveComponent} from "./components/leave/new-leave/new-leave.component";
 import {SideBarComponent} from "./components/side-bar/side-bar.component";
 import {CalendarComponent} from "./components/leave/calendar/calendar.component";
-import {SignupComponent} from "./pages/signup/signup.component";
-import {LoginComponent} from "./pages/login/login.component";
+import {LoginComponent} from "./components/auth/login/login.component";
 const routes: Routes = [
 
   { path: '',
@@ -16,8 +15,7 @@ const routes: Routes = [
   { path: 'login',
     component: LoginComponent },
 
-  { path: 'signup',
-    component: SignupComponent },
+
 
 
   {

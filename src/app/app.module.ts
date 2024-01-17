@@ -17,8 +17,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './components/leave/calendar/calendar.component';
 import { LeaveDetailComponent } from './components/leave/leave-detail/leave-detail.component';
-import {SignupComponent} from "./pages/signup/signup.component";
-import {LoginComponent} from "./pages/login/login.component";
+import {LoginComponent} from "./components/auth/login/login.component"
 
 
 
@@ -33,7 +32,6 @@ import {LoginComponent} from "./pages/login/login.component";
     CalendarComponent,
     LeaveDetailComponent,
     LoginComponent,
-    SignupComponent
   ],
   imports: [
     TableComponent,
