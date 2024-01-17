@@ -7,15 +7,12 @@ import {SideBarComponent} from "./components/side-bar/side-bar.component";
 import {CalendarComponent} from "./components/leave/calendar/calendar.component";
 import {LoginComponent} from "./components/auth/login/login.component";
 const routes: Routes = [
-
   { path: '',
     redirectTo: 'login',
     pathMatch: 'full' },
 
   { path: 'login',
     component: LoginComponent },
-
-
 
 
   {
@@ -32,7 +29,6 @@ const routes: Routes = [
 
     ]
   },
-
 ];
 
 @NgModule({
